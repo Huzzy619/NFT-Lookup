@@ -1,0 +1,9 @@
+from django.apps import AppConfig
+
+
+class DropsConfig(AppConfig):
+    default_auto_field = "django.db.models.BigAutoField"
+    name = "drops"
+
+    def ready(self) -> None:
+        import drops.signals
