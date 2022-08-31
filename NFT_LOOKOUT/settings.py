@@ -27,7 +27,7 @@ INSTALLED_APPS = [
     'core',
     'drops', 
     'rarenfts',
-
+    'jazzmin',
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
