@@ -11,7 +11,7 @@ from rarenfts.filters import DropsFilter
 from .models import Calendar, NFT, Transaction
 
 # Create your views here.
-TOTAL = Calendar.objects.filter(verification=True).count()
+TOTAL = 10 #Calendar.objects.filter(verification=True).count()
 
 
 def limited_drops(request):
@@ -24,7 +24,7 @@ def limited_drops(request):
 
     days_list = collections.dates('date', 'day').distinct()
 
-    context['total'] = collections.count()
+    context['total'] = 10 #collections.count()
     context['days_list'] = days_list
     context['collections'] = collections
 

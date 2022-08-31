@@ -16,7 +16,7 @@ def in_date_limited(collections, day):
 
 @register.filter
 def count_col(collections, day):
-    return in_date(collections, day).count()
+    return 10 #in_date(collections, day).count()
 
 
 @register.filter
