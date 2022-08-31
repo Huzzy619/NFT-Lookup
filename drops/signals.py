@@ -1,12 +1,15 @@
 from __future__ import print_function
-from django.dispatch import receiver
-from django.db.models.signals import post_save
-from .models import Calendar
-from django.contrib.auth import get_user_model
-from decouple import config
+
+import os
+
 import sib_api_v3_sdk
+from decouple import config
+from django.contrib.auth import get_user_model
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 from sib_api_v3_sdk.rest import ApiException
 
+from .models import Calendar
 
 
 @receiver(post_save, sender=Calendar)
@@ -17,7 +20,7 @@ def alert_admin_about_drops(instance, created, **kwargs):
         if admin_emails:
 
             configuration = sib_api_v3_sdk.Configuration()
-            configuration.api_key['api-key'] = config('API_KEY')
+            configuration.api_key['api-key'] = os.environ.get('API_KEY')
 
             api_instance = sib_api_v3_sdk.TransactionalEmailsApi(
                 sib_api_v3_sdk.ApiClient(configuration))

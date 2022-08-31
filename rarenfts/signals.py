@@ -1,4 +1,5 @@
 from __future__ import print_function
+import os
 from django.dispatch import receiver
 from django.db.models.signals import post_save
 from .models import Collection
@@ -16,7 +17,7 @@ def alert_admin(instance, created, **kwargs):
         if admin_emails:
 
             configuration = sib_api_v3_sdk.Configuration()
-            configuration.api_key['api-key'] = config('API_KEY')
+            configuration.api_key['api-key'] = os.environ.get('API_KEY')
 
             api_instance = sib_api_v3_sdk.TransactionalEmailsApi(
                 sib_api_v3_sdk.ApiClient(configuration))
