@@ -22,7 +22,7 @@ from django.views.generic import TemplateView
 urlpatterns = [
     path("admin/", admin.site.urls),
     path('', include('rarenfts.urls')),
-    path('drops/', include ('drops.urls')),
+    path('drops/', include ('nft_calendar.urls')),
     path('base', TemplateView.as_view(template_name='NEW/base.html')),
     path('base2', TemplateView.as_view(template_name='NEW/base_calendar.html')),
     # path('__debug__/', include('debug_toolbar.urls')),

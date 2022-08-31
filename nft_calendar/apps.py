@@ -1,9 +1,9 @@
 from django.apps import AppConfig
 
 
-class DropsConfig(AppConfig):
+class NftCalendarConfig(AppConfig):
     default_auto_field = "django.db.models.BigAutoField"
-    name = "drops"
+    name = "nft_calendar"
 
     def ready(self) -> None:
-        import drops.signals
+        import nft_calendar.signals.handlers

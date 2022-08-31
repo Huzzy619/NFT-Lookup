@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 INSTALLED_APPS = [
     'core',
-    'drops', 
+    'nft_calendar', 
     'rarenfts',
     'jazzmin',
     "django.contrib.admin",

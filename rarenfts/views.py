@@ -1,11 +1,12 @@
 import os
+import statistics
 
 from core.models import Settings,Statistics
 from django.contrib.messages import success, warning, info, error
 from django.db import transaction
 from django.shortcuts import redirect, render
 from decimal import Decimal
-
+from .signals import alert_admin_signal
 from .filters import CollectionFilter
 from .models import NFT, Collection, Transaction
 # Create your views here.
@@ -19,10 +20,10 @@ def index(request):
         verification=True, featured=False).prefetch_related('images').order_by('-created_on')[:19 - featured_collections.count()]
 
     # limiting the total number to 19
-
     stats, created = Statistics.objects.get_or_create(id=1)
+    Settings.objects.get_or_create(id = 1)
     # Just passing the dummy stats to template
-
+    
     context = {
         'collections': verified_collections,
         'stats': stats,
@@ -93,8 +94,6 @@ def add_collection(request):
         website = request.POST.get('website')
         listing_type = request.POST.get('listing_type')
 
-        if network == '':
-            network = 'Null'
 
     # create objects safely
         try:
@@ -134,8 +133,11 @@ def add_collection(request):
                             request, "No Link provided, defaults to free listing")
 
                 success(request, "Collection added sucessfully, awaiting approval")
+                alert_admin_signal.send_robust(sender=Collection, instance = collection, created = True)
                 return redirect('index')
 
         except:
             error(request, "Invalid inputs")
             return redirect('index')
+
+        

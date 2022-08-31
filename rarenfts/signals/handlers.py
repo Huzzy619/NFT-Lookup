@@ -1,17 +1,17 @@
 from __future__ import print_function
 import os
 from django.dispatch import receiver
-from django.db.models.signals import post_save
-from .models import Collection
+from rarenfts.models import Collection
 from django.contrib.auth import get_user_model
 from decouple import config
 import sib_api_v3_sdk
 from sib_api_v3_sdk.rest import ApiException
+from rarenfts.signals import alert_admin_signal
 
-
-@receiver(post_save, sender=Collection)
-def alert_admin(instance, created, **kwargs):
-    if created:
+@receiver(alert_admin_signal)
+def alert_admin(**kwargs):
+    instance = kwargs['instance']
+    if kwargs['created'] :
         admin_emails = get_user_model().objects.filter(is_staff=True).values()
 
         if admin_emails:

@@ -23,7 +23,7 @@ class Collection (models.Model):
 
     name = models.CharField(max_length=255)
     guid = models.UUIDField(default=uuid4, unique=True, editable=False)
-    network = models.CharField(max_length=255, choices=NETWORK)
+    network = models.CharField(max_length=255, choices=NETWORK, default=ETHEREUM)
     floor_price = models.DecimalField(
         max_digits=6, decimal_places=2, null=True, blank=True, default=0)
     volume = models.PositiveIntegerField(default=0, null=True, blank=True)

@@ -1,6 +1,5 @@
 {% load static %}
 {% load custom_tags %}
-{% include 'messages.html' %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,8 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="assets/favicon.png">
-    <link rel="icon" href="{% static 'assets/favicon.png' %}">
+    <link rel="icon" href="{% static 'assets/Nft lookout.png' %}">
     <link rel="stylesheet" href="{% static 'izi/notify/dist/css/iziToast.min.css' %}">
 
     <!-- custom css -->
@@ -307,11 +305,11 @@
                                 </label> <br>
                                 <div class="networks">
                                     <div id="netname1">
-                                        <input type="radio" id="net1" name="network" value="SOL">
+                                        <input type="radio" id="net1" name="network" value="SOL" >
                                         <label for="net1" value="SOL">SOL</label>&nbsp;&nbsp;
                                     </div>
                                     <div id="netname2">
-                                        <input type="radio" id="net2" name="network" value="ETH">
+                                        <input type="radio" id="net2" name="network" value="ETH" checked>
                                         <label for="net2">ETH</label>&nbsp;&nbsp;
                                     </div>
                                     <div id="netname3">
@@ -419,11 +417,10 @@
     }
 
     </script>
+<script src="{% static 'izi/notify/dist/js/iziToast.min.js' %}"> </script>
 
-{% comment %} 
-    <script src="{% static 'izi/notify/dist/js/iziToast.min.js' %}">
-
-        {% if messages %}
+<script>
+ {% if messages %}
             {% for message in messages %}
                 {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %} 
                 iziToast.success({
@@ -454,12 +451,14 @@
                     position:  'topRight',
         
                 });
-        
-                
+    
                 
                 {% endif %}
             {% endfor %}
-        {% endif %} {% endcomment %}
+        {% endif %}
+       
+
+
         
         </script>
     </body>

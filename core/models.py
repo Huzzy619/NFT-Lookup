@@ -1,3 +1,4 @@
+from email.policy import default
 from django.db import models
 
 from django.contrib.auth.models import AbstractUser
@@ -8,10 +9,13 @@ class User(AbstractUser):
     email = models.EmailField(unique=True)
 
 class Settings(models.Model):
-    logo = models.ImageField(upload_to = 'logo/')
-    trade_mark = models.CharField(max_length = 225, default='Rarity Sniper')
-    title = models.CharField(max_length=1000)
-    slogan = models.TextField()
+    logo = models.ImageField(upload_to = 'logo/', default = 'default.png')
+    trade_mark = models.CharField(max_length = 225, default='NFT LOOKOUT')
+    title = models.CharField(max_length=1000, default="The #1 source for NFT lookout")
+    slogan = models.TextField(default="Your best choice when you're on the lookout for NFTs.")
+
+    def __str__(self) -> str:
+        return 'Edit Settings'
 
 
     class Meta:

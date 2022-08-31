@@ -26,7 +26,7 @@ share/python-wheels/
 *.egg
 MANIFEST
 /.idea/
-/media/
+NFT_collections
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
@@ -60,7 +60,7 @@ coverage.xml
 *.log
 local_settings.py
 settings.ini
-
+/NFT_collections/
 # Flask stuff:
 instance/
 .webassets-cache

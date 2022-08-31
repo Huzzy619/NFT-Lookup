@@ -6,4 +6,4 @@ class RarenftsConfig(AppConfig):
     name = 'rarenfts'
 
     def ready(self) -> None:
-        import rarenfts.signals
+        import rarenfts.signals.handlers

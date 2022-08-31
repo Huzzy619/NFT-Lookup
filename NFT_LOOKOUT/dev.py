@@ -1,4 +1,3 @@
-import imp
 from .settings import *
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = "django-insecure--ojc&jrm^1r94qlu1a*@1pv4x$_8evky+u)xfsm(f$8-0+j)p^"
@@ -26,3 +25,4 @@ DATABASES = {
         'PORT': '5432',
     }
 }
+

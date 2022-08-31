@@ -5,16 +5,15 @@ import os
 import sib_api_v3_sdk
 from decouple import config
 from django.contrib.auth import get_user_model
-from django.db.models.signals import post_save
 from django.dispatch import receiver
+from rarenfts.signals import alert_admin_signal
 from sib_api_v3_sdk.rest import ApiException
 
-from .models import Calendar
 
-
-@receiver(post_save, sender=Calendar)
-def alert_admin_about_drops(instance, created, **kwargs):
-    if created:
+@receiver(alert_admin_signal)
+def alert_admin_about_drops(**kwargs):
+    instance = kwargs['instance']
+    if kwargs['created']:
         admin_emails = get_user_model().objects.filter(is_staff=True).values()
 
         if admin_emails:
@@ -38,3 +37,4 @@ def alert_admin_about_drops(instance, created, **kwargs):
                 print(api_response)
             except ApiException as e:
                 print("Exception when calling SMTPApi->send_transac_email: %s\n" % e)
+

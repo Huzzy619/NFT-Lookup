@@ -414,7 +414,7 @@
                                     <label for="net1" value="SOL">SOL</label>&nbsp;&nbsp;
                                 </div>
                                 <div id="netname2">
-                                    <input type="radio" id="net2" name="network" class="network" value="ETH">
+                                    <input type="radio" id="net2" name="network" class="network" value="ETH" checked>
                                     <label for="net2">ETH</label>&nbsp;&nbsp;
                                 </div>
                                 <div id="netname3">
@@ -528,7 +528,10 @@ for (var i = 0; i < btns.length; i++) {
 
 </script>
 
-<!-- <script src="{% static 'izi/notify/dist/js/iziToast.min.js' %}"> 
+    
+<script src="{% static 'izi/notify/dist/js/iziToast.min.js' %}">  </script>
+
+<script>
 
     {% if messages %}
         {% for message in messages %}
@@ -567,7 +570,7 @@ for (var i = 0; i < btns.length; i++) {
             {% endif %}
         {% endfor %}
     {% endif %}
+</script>
     
-    </script> -->
 </body>
 </html>
