@@ -133,11 +133,12 @@ def add_collection(request):
                             request, "No Link provided, defaults to free listing")
 
                 success(request, "Collection added sucessfully, awaiting approval")
-                alert_admin_signal.send_robust(sender=Collection, instance = collection, created = True)
-                return redirect('index')
+                
 
         except:
             error(request, "Invalid inputs")
             return redirect('index')
 
+        alert_admin_signal.send_robust(sender=Collection, instance = collection, created = True)
+        return redirect('index')
         
