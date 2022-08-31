@@ -16,6 +16,7 @@ class Settings(models.Model):
 
     def __str__(self) -> str:
         return 'Edit Settings'
+        
 
 
     class Meta:
