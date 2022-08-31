@@ -1,5 +1,5 @@
 {% load static %}
-{% include 'messages.html' %}
+{% comment %} {% include 'messages.html' %} {% endcomment %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -65,7 +65,7 @@
                     <i class="fa-solid fa-book"></i>
                     NFT COLLECTIONS
                 </a>
-                <a href="#" class="linknav">
+                <a href="{% url 'calendar' %}" class="linknav">
                     <i class="fa-solid fa-calendar-days"></i>
                     NFT DROPS CALENDAR
                 </a>
@@ -467,7 +467,8 @@
             $("div.alert").fadeOut(3000);
         });
     </script>
-</body>
+    
+
 
 
 <script src="{% static 'script.js' %}"></script>
@@ -527,4 +528,46 @@ for (var i = 0; i < btns.length; i++) {
 
 </script>
 
+<!-- <script src="{% static 'izi/notify/dist/js/iziToast.min.js' %}"> 
+
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %} 
+            iziToast.success({
+                title: 'OK',
+                message: '{{message}}',
+                position:  'topRight',
+            });
+            {% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %} 
+            iziToast.error({
+                title: 'Error',
+                message: '{{message}}',
+                position:  'topRight',
+    
+            });
+            {% elif message.level == DEFAULT_MESSAGE_LEVELS.WARNING %} 
+            iziToast.warning({
+                title: 'Caution',
+                message: '{{message}}',
+                position:  'topRight',
+                timeout: 10000,
+    
+            });
+    
+            {% elif message.level == DEFAULT_MESSAGE_LEVELS.INFO %} 
+            iziToast.info({
+                title: 'Hey',
+                message: '{{message}}',
+                position:  'topRight',
+    
+            });
+    
+            
+            
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+    
+    </script> -->
+</body>
 </html>

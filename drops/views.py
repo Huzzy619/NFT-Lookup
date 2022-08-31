@@ -11,7 +11,7 @@ from .filters import DropsFilter
 from .models import Calendar, NFT, Transaction
 
 # Create your views here.
-TOTAL = 10 #Calendar.objects.filter(verification=True).count()
+# TOTAL = 10 # RED FLAG
 
 
 def limited_drops(request):
@@ -21,10 +21,10 @@ def limited_drops(request):
 
     collections = Calendar.objects.filter(
         verification=True).order_by('-created_on')
+    context['total'] = collections.count()
 
     days_list = collections.dates('date', 'day').distinct()
 
-    context['total'] = 10 #collections.count()
     context['days_list'] = days_list
     context['collections'] = collections
 
@@ -42,7 +42,7 @@ def all_drops_by_days(request, day):
 
     days_list = collections.dates('date', 'day').distinct()
 
-    context['total'] = TOTAL
+    context['total'] = Calendar.objects.filter(verification=True).count()
     context['days_list'] = days_list
     context['collections'] = collections
     context['settings'] = Settings.objects.first()
@@ -64,7 +64,7 @@ def search_drops_view(request):
 
             'search_key': search_key,
             'stats': stats,
-            'total': TOTAL
+            'total': Calendar.objects.filter(verification=True).count()
 
         }
         context['settings'] = Settings.objects.first()
@@ -84,7 +84,7 @@ def search_by_date(request):
         'search_key': date,
         'collections': Calendar.objects.filter(date=date, verification=True).order_by('-created_on'),
         'stats': stats,
-        'total': TOTAL
+        'total': Calendar.objects.filter(verification=True).count()
 
     }
     context['settings'] = Settings.objects.first()
