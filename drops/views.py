@@ -7,7 +7,7 @@ from django.contrib import messages
 from django.db import transaction
 from django.shortcuts import redirect, render
 from decimal import Decimal
-from rarenfts.filters import DropsFilter
+from .filters import DropsFilter
 from .models import Calendar, NFT, Transaction
 
 # Create your views here.
