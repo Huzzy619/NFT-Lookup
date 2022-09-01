@@ -25,7 +25,7 @@ class DropsCalendarAdmin(admin.ModelAdmin):
     def payment(self, collection):
         if collection.listing_type == 'paid':
             if collection.transaction_link:
-                url = reverse("admin:drops_transaction_change",
+                url = reverse("admin:nft_calendar_transaction_change",
                               args=(collection.transaction_link.id,))
 
                 return format_html('<a href="{}">Yes</a>', url)
@@ -50,7 +50,7 @@ class DropsNFTAdmin(admin.ModelAdmin):
         return nft.collection.volume
 
     def collection_link(self, nft):
-        url = reverse("admin:drops_calendar_change",
+        url = reverse("admin:nft_calendar_calendar_change",
                       args=(nft.collection.id,))
 
         return format_html('<a href="{}">{}</a>', url, nft.collection)

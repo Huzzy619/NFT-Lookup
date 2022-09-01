@@ -24,6 +24,7 @@ def index(request):
     Settings.objects.get_or_create(id = 1)
     # Just passing the dummy stats to template
     
+    
     context = {
         'collections': verified_collections,
         'stats': stats,
