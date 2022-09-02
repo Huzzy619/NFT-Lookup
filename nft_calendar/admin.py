@@ -9,7 +9,7 @@ class DropsNFTInline(admin.TabularInline):
     readonly_fields = ['nft_art']
 
     def nft_art(self, instance):
-        return format_html(f'<img src="{instance.image.url}" alt="{instance.collection.name}" class = "thumbnail" >')
+        return format_html(f'<a href ="{instance.image.url}"><img src="{instance.image.url}" alt="{instance.collection.name}" class = "thumbnail" ></a>')
 
 @admin.register(Calendar)
 class DropsCalendarAdmin(admin.ModelAdmin):
