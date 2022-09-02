@@ -6,9 +6,9 @@ import dj_database_url
 SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['nft-lookup.herokuapp.com']
+ALLOWED_HOSTS = ['nft-lookup.herokuapp.com','nft-lookout-production.up.railway.app']
 
 DATABASES = {
     "default": dj_database_url.config()
