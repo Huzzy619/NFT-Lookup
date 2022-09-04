@@ -17,13 +17,14 @@ def index(request):
         featured_collections = Collection.objects.filter(
         featured=True, verification=True).prefetch_related('images').order_by('-created_on')
 
-    
+        # limiting the total number to 19
         verified_collections = Collection.objects.filter(
         verification=True, featured=False).prefetch_related('images').order_by('-created_on')[:19 - featured_collections.count()]
     except:
-        warning(request, "No collections at this moment")
-        return redirect('https://google.com')
-    # limiting the total number to 19
+        verified_collections = Collection.objects.filter(
+        verification=True, featured=False).prefetch_related('images').order_by('-created_on')
+
+
     stats, created = Statistics.objects.get_or_create(id=1)
     Settings.objects.get_or_create(id = 1)
     # Just passing the dummy stats to template
