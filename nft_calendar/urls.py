@@ -3,10 +3,10 @@ from django.urls import path
 from .views import *
 
 urlpatterns = [
-    
-    
-    path('search-drops',search_drops_view, name='search-drops'),
-    path('search-drops-date', search_by_date, name='search-drops-date'),
+
+
+    path('search-drops', search_calendar, name='search-drops'),
+    path('search-drops-date', search_calendar_by_date, name='search-drops-date'),
 
 
 
@@ -17,4 +17,3 @@ urlpatterns = [
 
     path('add-calendar', add_calendar, name='add_calendar'),
 ]
-

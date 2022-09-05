@@ -293,8 +293,8 @@
                                 <br>
                                 <input type="time" name="mint_time" id="mint_time" placeholder="Mint Time" required>
                                 <br>
-                                <input type="number" name="mint_price" id="mint_price" placeholder="Mint Price" step=".01"
-                                    required> <br>
+                                <input type="number" name="mint_price" id="mint_price" placeholder="Mint Price"
+                                    step=".01" required> <br>
                                 <input type="number" name="total_supply" id="total_supply" placeholder="Total Supply"
                                     required> <br>
                                 <input type="file" name="image2" id="image2" required> <br>
@@ -305,7 +305,7 @@
                                 </label> <br>
                                 <div class="networks">
                                     <div id="netname1">
-                                        <input type="radio" id="net1" name="network" value="SOL" >
+                                        <input type="radio" id="net1" name="network" value="SOL">
                                         <label for="net1" value="SOL">SOL</label>&nbsp;&nbsp;
                                     </div>
                                     <div id="netname2">
@@ -362,104 +362,105 @@
             });
         </script>
 
-<script src="{% static 'script.js' %}"></script>
+        <script src="{% static 'script.js' %}"></script>
 
-<script>
+        <script>
 
 
-    const netname1 = document.getElementById('netname1');
-    const netname2 = document.getElementById('netname2');
-    const netname3 = document.getElementById('netname3');
-    const netname4 = document.getElementById('netname4');
-    const prevCardIcon = document.getElementById('prevcardicon');
-    const prevCardImage = document.getElementById('previmagecard');
-    netname1.onclick = () =>{
-        document.getElementById('netprev1').innerHTML = 'SOL';
-        prevCardIcon.style.backgroundColor = 'blue'
-        prevCardImage.src = "{% static 'assets/sol.png'%}" 
-    }
-    netname2.onclick = () =>{
-        document.getElementById('netprev1').innerHTML = "ETH";
-        prevCardIcon.style.backgroundColor = '#344155'
-        prevCardImage.src = "{% static 'assets/eth.png'%}"
-    }
-    netname3.onclick = () =>{
-        document.getElementById('netprev1').innerHTML = 'BSC';
-        prevCardIcon.style.backgroundColor = 'rgb(56, 17, 23)'
-        prevCardImage.src = "{% static 'assets/bsc.png'%}"
-    }
-    netname4.onclick = () =>{
-        document.getElementById('netprev1').innerHTML = "MATIC";
-        prevCardIcon.style.backgroundColor = 'rgb(183, 137, 225)'
-        prevCardImage.src = "{% static 'assets/matic.svg'%}"
-    }
-    
-    const paid = document.getElementById("paid");
-    
-    paid.onclick = () => {
-      paidmsg.style.display = "block";
-    };
-    
-    const free = document.getElementById("free");
-    
-    free.onclick = () => {
-      paidmsg.style.display = "none";
-    };
-    
-    var linkss = document.getElementById("links");
-    var btns = linkss.getElementsByClassName("linknav");
-    for (var i = 0; i < btns.length; i++) {
-      btns[i].addEventListener("click", function () {
-        var current = document.getElementsByClassName("active");
-        current[0].className = current[0].className.replace(" active", "");
-        this.className += " active";
-      });
-    }
+            const netname1 = document.getElementById('netname1');
+            const netname2 = document.getElementById('netname2');
+            const netname3 = document.getElementById('netname3');
+            const netname4 = document.getElementById('netname4');
+            const prevCardIcon = document.getElementById('prevcardicon');
+            const prevCardImage = document.getElementById('previmagecard');
+            netname1.onclick = () => {
+                document.getElementById('netprev1').innerHTML = 'SOL';
+                prevCardIcon.style.backgroundColor = 'blue'
+                prevCardImage.src = "{% static 'assets/sol.png'%}"
+            }
+            netname2.onclick = () => {
+                document.getElementById('netprev1').innerHTML = "ETH";
+                prevCardIcon.style.backgroundColor = '#344155'
+                prevCardImage.src = "{% static 'assets/eth.png'%}"
+            }
+            netname3.onclick = () => {
+                document.getElementById('netprev1').innerHTML = 'BSC';
+                prevCardIcon.style.backgroundColor = 'rgb(56, 17, 23)'
+                prevCardImage.src = "{% static 'assets/bsc.png'%}"
+            }
+            netname4.onclick = () => {
+                document.getElementById('netprev1').innerHTML = "MATIC";
+                prevCardIcon.style.backgroundColor = 'rgb(183, 137, 225)'
+                prevCardImage.src = "{% static 'assets/matic.svg'%}"
+            }
 
-    </script>
-<script src="{% static 'izi/notify/dist/js/iziToast.min.js' %}"> </script>
+            const paid = document.getElementById("paid");
 
-<script>
- {% if messages %}
-            {% for message in messages %}
-                {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %} 
-                iziToast.success({
-                    title: 'OK',
-                    message: '{{message}}',
-                    position:  'topRight',
+            paid.onclick = () => {
+                paidmsg.style.display = "block";
+            };
+
+            const free = document.getElementById("free");
+
+            free.onclick = () => {
+                paidmsg.style.display = "none";
+            };
+
+            var linkss = document.getElementById("links");
+            var btns = linkss.getElementsByClassName("linknav");
+            for (var i = 0; i < btns.length; i++) {
+                btns[i].addEventListener("click", function () {
+                    var current = document.getElementsByClassName("active");
+                    current[0].className = current[0].className.replace(" active", "");
+                    this.className += " active";
                 });
-                {% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %} 
-                iziToast.error({
-                    title: 'Error',
-                    message: '{{message}}',
-                    position:  'topRight',
-        
-                });
-                {% elif message.level == DEFAULT_MESSAGE_LEVELS.WARNING %} 
-                iziToast.warning({
-                    title: 'Caution',
-                    message: '{{message}}',
-                    position:  'topRight',
-                    timeout: 10000,
-        
-                });
-        
-                {% elif message.level == DEFAULT_MESSAGE_LEVELS.INFO %} 
-                iziToast.info({
-                    title: 'Hey',
-                    message: '{{message}}',
-                    position:  'topRight',
-        
-                });
-    
-                
-                {% endif %}
-            {% endfor %}
-        {% endif %}
-       
+            }
 
-
-        
         </script>
-    </body>
+        <script src="{% static 'izi/notify/dist/js/iziToast.min.js' %}"> </script>
+
+        <script>
+            {% if messages %}
+            {% for message in messages %}
+            {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+            iziToast.success({
+                title: 'OK',
+                message: '{{message}}',
+                position: 'topRight',
+            });
+            {% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+            iziToast.error({
+                title: 'Error',
+                message: '{{message}}',
+                position: 'topRight',
+
+            });
+            {% elif message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+            iziToast.warning({
+                title: 'Caution',
+                message: '{{message}}',
+                position: 'topRight',
+                timeout: 10000,
+
+            });
+
+            {% elif message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+            iziToast.info({
+                title: 'Hey',
+                message: '{{message}}',
+                position: 'topRight',
+
+            });
+
+
+            {% endif %}
+            {% endfor %}
+            {% endif %}
+
+
+
+
+        </script>
+</body>
+
 </html>

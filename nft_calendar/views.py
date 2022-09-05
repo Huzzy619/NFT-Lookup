@@ -48,7 +48,7 @@ def all_drops_by_days(request, day):
     return render(request, 'all_drops_collection_by_date.html', context)
 
 
-def search_drops_view(request):
+def search_calendar(request):
     if request.method == 'POST':
 
         search_key = str(request.POST['search_key'])
@@ -59,7 +59,6 @@ def search_drops_view(request):
 
         context = {
             'collections': search_drops.search(),
-
             'search_key': search_key,
             'stats': stats,
             'total': Calendar.objects.filter(verification=True).count()
@@ -72,7 +71,7 @@ def search_drops_view(request):
     return render(request, 'calendar_search.html', context)
 
 
-def search_by_date(request):
+def search_calendar_by_date(request):
     stats, created = Statistics.objects.get_or_create(id=1)
 
     if request.method == 'POST':
@@ -96,7 +95,8 @@ def add_calendar(request):
         # Get all inputs
 
         name = request.POST['name']
-        network = request.POST.get('network', '') # This is beacause there is a possibility that no network is selected
+        # This is beacause there is a possibility that no network is selected
+        network = request.POST.get('network', '')
         floor_price = Decimal(request.POST['floor_price'])
         # volume = request.POST['volume']
         date = request.POST['date']
@@ -108,7 +108,6 @@ def add_calendar(request):
         total_supply = request.POST['total_supply']
 
         listing_type = request.POST['listing_type']
-
 
     # create objects safely
         try:
@@ -147,16 +146,19 @@ def add_calendar(request):
                         collection.save()  # update database depending on wether the listing is paid for or not
 
                     else:
-                        messages.warning(request, "No Link provided, defaults to free listing")
-                            
-                messages.success(request,"You have successfully added a collection to Drops Calendar")
-                
-                 # redirect home after success
+                        messages.warning(
+                            request, "No Link provided, defaults to free listing")
+
+                messages.success(
+                    request, "You have successfully added a collection to Drops Calendar")
+
+                # redirect home after success
 
         except:
             messages.error(request, "Invalid inputs")
             return redirect('calendar')
 
-        alert_admin_signal.send_robust(Calendar, instance = collection , created = True)
+        alert_admin_signal.send_robust(
+            Calendar, instance=collection, created=True)
 
-        return redirect('calendar') 
+        return redirect('calendar')

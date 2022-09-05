@@ -1,13 +1,12 @@
 {% extends 'base_calendar.html' %}
 {% load static %}
-{% load custom_tags %}
 
 
 {% block content %}
 
             <div class="items">
                 <div class="heading">
-                    {% if collections or featured %}
+                    {% if collections %}
 
                     <h1>Search Results for "{{search_key}}"</h1>
                     {% else %}

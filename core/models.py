@@ -10,9 +10,9 @@ class User(AbstractUser):
 
 class Settings(models.Model):
     logo = models.ImageField(upload_to = 'logo/', default = 'default.png')
-    trade_mark = models.CharField(max_length = 225, default='NFT LOOKOUT')
-    title = models.CharField(max_length=1000, default="The #1 source for NFT lookout")
-    slogan = models.TextField(default="Your best choice when you're on the lookout for NFTs.")
+    trade_mark = models.CharField(max_length = 225, default='NFT LOOKUP')
+    title = models.CharField(max_length=1000, default="The #1 source for NFT lookup")
+    slogan = models.TextField(default="Your best choice when you're on the lookup for NFTs.")
 
     def __str__(self) -> str:
         return 'Edit Settings'

@@ -34,7 +34,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     'django.contrib.staticfiles',
-    
+
     'cloudinary_storage',
     'cloudinary',
 ]
@@ -137,10 +137,10 @@ try:
     if name:
         web_name = name
 
-    web_name = "NFT LOOKOUT"
+    web_name = "NFT LOOKUP"
 
 except:
-    web_name = "NFT LOOKOUT"
+    web_name = "NFT LOOKUP"
 
 JAZZMIN_SETTINGS = {
     "site_logo": "assets/Nft lookout.png",
