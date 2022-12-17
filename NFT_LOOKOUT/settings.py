@@ -18,7 +18,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
+SECRET_KEY = "django-insecure--ojc&jrm^1r94qlu1a*@1pv4x$_8evky+u)xfsm(f$8-0+j)p^"
 
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = True
+
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -74,6 +79,12 @@ WSGI_APPLICATION = "NFT_LOOKOUT.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'db.mydatabase',
+    }
+}
 
 
 
