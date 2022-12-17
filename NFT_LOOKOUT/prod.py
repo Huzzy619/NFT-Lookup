@@ -6,10 +6,10 @@ import os
 SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['nft-lookup.herokuapp.com','nft-lookout.up.railway.app']
-CSRF_TRUSTED_ORIGINS = ['https://nft-lookout.up.railway.app']
+ALLOWED_HOSTS = ['nft-lookup.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['https://nft-lookup.up.railway.app']
 
 
 # DATABASES = {
