@@ -82,7 +82,7 @@ WSGI_APPLICATION = "NFT_LOOKOUT.wsgi.application"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'db.sqlite3',
+        'NAME': 'lookdb.sqlite3',
     }
 }
 
